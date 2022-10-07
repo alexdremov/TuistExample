@@ -1,0 +1,24 @@
+import ProjectDescription
+import ProjectDescriptionHelpers
+
+let project = Project(
+    name: Feature.{{name}}.rawValue,
+    targets: [
+        .feature(
+            interface: .{{name}},
+            dependencies: [
+                .common
+            ]
+        ),
+        .feature(
+            implementation: .{{name}},
+            dependencies: [
+                .common,
+                .feature(interface: .{{name}}),
+            ],
+            resources: [
+                "resources/**"
+            ]
+        )
+    ]
+)
